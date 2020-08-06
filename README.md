@@ -2,8 +2,9 @@
 
 
 ## Install dependencies and run gulp tasks
-`npm install`
-`gulp`
+`npm install
+gulp
+`
 
 ## Gulp plugins
 - `browser-sync.`
