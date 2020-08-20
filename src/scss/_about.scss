@@ -1,0 +1,76 @@
+.about {
+    &__title{
+        font-family: Georgia;
+        font-weight: normal;
+        font-size: 32px;
+        line-height: 38px;
+        color: #4E5665;
+        text-align: center;
+        margin-bottom: 13px;
+    }
+    &__text{
+        font-family: 'Lato';
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 28px;
+        color: #505050; 
+        margin-bottom: 72px;
+    }   
+}
+
+.about__item{
+    margin-bottom: 100px;
+    padding: 70px 0; 
+    background-repeat: no-repeat;
+    background-position: right;
+    .about__box{
+        padding: 33px 40px 18px 40px;
+        max-width: 470px;
+        width: 100%;
+        background: #fff;
+        position: relative;
+        &::after{
+            content: '';
+            width: 33px;
+            height: 33px;
+            position: absolute;
+            background-image: url('../img/svg/Box_deckor.svg');
+            top: 19px;
+            left: 19px;
+        }
+        &::before{
+            content: '';
+            width: 33px;
+            height: 33px;
+            position: absolute;
+            background-image: url('../img/svg/Box_deckor_rever.svg');
+            bottom: 19px;
+            right: 19px;
+        }
+        &-title{
+            font-family: Georgia;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 24px;
+            line-height: 25px;
+            color: #4E5665;
+            margin-bottom: 20px;
+        }
+        &-text{
+            font-family: 'Lato';
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 28px;
+            color: #505050; 
+        }
+    }
+    &:nth-child(even){
+        background-position: left;
+        .about__box{
+            margin-left: auto;
+        }
+    }
+}
+

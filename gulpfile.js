@@ -17,7 +17,7 @@ const gulp = require('gulp'),
 
 // gulp scss
 gulp.task('scss', () => {
-    return gulp.src('./src/scss/style.scss')
+    return gulp.src('./src/style.scss')
         .pipe(sass())
         .pipe(autoprefixer({
              overrideBrowserslist: ['last 10 versions'], 
@@ -29,7 +29,7 @@ gulp.task('scss', () => {
 
 // gulp html 
 gulp.task('html', () => {
-    return gulp.src('./src/page/index.html')
+    return gulp.src('./src/index.html')
         .pipe(include({
             prefix: '@@',
             basepath: '@file'
@@ -48,23 +48,23 @@ gulp.task('img', function() {
 
 // gulp copy
 gulp.task('copyImg',()=>{
-    return gulp.src('./src/img/*')
+    return gulp.src('./src/img/**')
     .pipe(gulp.dest('./public/img/'))
     .pipe(browserSync.stream())
 })
 gulp.task('copyFonts',()=>{
     return gulp.src('./src/fonts/*')
-    .pipe(gulp.src('./src/fonts/'))
+    //.pipe(gulp.src('./src/fonts/'))
     .pipe(gulp.dest('./public/fonts/'))
     .pipe(browserSync.stream())
 })
 gulp.task('copy',gulp.parallel('copyFonts','copyImg'))
 
- 
 // gulp css
 gulp.task('css', () => {
     return gulp.src([
         'node_modules/normalize.css/normalize.css',
+        'node_modules/bootstrap/dist/css/bootstrap-reboot.min.css',
         './src/css/*.css',
     ]) 
     .pipe(concat('./style.css'))
@@ -107,6 +107,7 @@ gulp.task('cle', () => {
             './public/**', '!./public',
             './src/scss/**.scss', '!./src/scss/style.scss',
             './src/page/**.html', '!./src/page/index.html',
+            '!./src/scss/mixin.scss','!./src/scss/vars.scss', 
         ])
         .pipe(clean());
 })
@@ -125,8 +126,14 @@ gulp.task('server', gulp.parallel('scss', 'html', 'js','copy', () => {
     })
     gulp.watch('./src/scss/**.scss', gulp.parallel('scss')) 
     gulp.watch('./src/page/**.html', gulp.parallel('html'))
+    //
+    gulp.watch('./src/style.scss', gulp.parallel('scss')) 
+    gulp.watch('./src/index.html', gulp.parallel('html'))
+    //
     gulp.watch('./src/css/*.css', gulp.parallel('css'))
     gulp.watch('./src/js/**.js', gulp.parallel('js'))
+    //
     gulp.watch('./src/img/**', gulp.parallel('copy'))
+    gulp.watch('./src/fonts/*', gulp.parallel('copy'))
 }))
 gulp.task('default', gulp.parallel('server'))

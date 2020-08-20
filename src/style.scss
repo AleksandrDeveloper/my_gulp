@@ -1,0 +1,29 @@
+@import"./scss/mixin.scss";
+@import"./scss/vars.scss";
+
+@include font-face("Lato", "../fonts/latoregular",400,normal);
+
+
+body {
+  font-family: Georgia, "Times New Roman", sans-serif;
+  color: #505050;
+  background: #fff;
+}
+
+.container{
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+.container-content{
+  max-width: 970px;
+  margin: 0 auto;
+}
+
+
+@import"./scss/_header.scss"; 
+@import"./scss/_reason.scss"; 
+@import"./scss/_about.scss"; 
+
+ 
